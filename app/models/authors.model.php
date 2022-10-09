@@ -26,27 +26,27 @@ class AuthorModel{
         
         return $authors;
     }
-
-    function getItems($id){
+    //aca deje seguir en view
+    function getAuthor($id){
+        $query = $this->db->prepare("SELECT * FROM `autor` WHERE Id=$id");
+        $query->execute();
+    
+       
+        $author = $query->fetch(PDO::FETCH_OBJ); // devuelve un arreglo de objetos
         
-        $query = $this->db->prepare("SELECT libro.Titulo, libro.ID FROM `autor` INNER JOIN `libro` ON autor.Id= libro.ID_autor_FK WHERE autor.Id=$id");
+        return $author;
+    }
+    
+    /*function getItems($id){
+        
+        $query = $this->db->prepare("SELECT autor.*, libro.* FROM `autor` INNER JOIN `libro` ON autor.Id= libro.ID_autor_FK WHERE autor.Id=$id");
         $query->execute();
 
         $itemsForAuthor = $query->fetchAll(PDO::FETCH_OBJ);
 
         return $itemsForAuthor;
 
-    }
-    //para el select del form y no me anda
-    function getCategories(){
-        $query = $this->db->prepare("SELECT * FROM autor");
-        $query->execute();
-    
-       
-        $categories = $query->fetchAll(PDO::FETCH_OBJ); // devuelve un arreglo de objetos
-        
-        return $categories;
-    }
+    }*/
    
     function insertAuthor($name, $biografy, $image){
         $query = $this->db->prepare("INSERT INTO autor(Nombre, Biografia, Imagen) VALUES(?, ?, ?)");
@@ -55,4 +55,17 @@ class AuthorModel{
         return $this->db->lastInsertId();
 
     }
+
+    function deleteAuthorById($id){
+        //poner condicion para eliminar categoria si..
+        $query = $this->db->prepare('DELETE FROM autor WHERE Id = ?');
+        $query->execute([$id]);
+    }
+    
+    function updateAuthorById($name,$biografy,$image,$id){
+        $query = $this->db->prepare('UPDATE autor SET Nombre = ?, Biografia= ?, Imagen= ? WHERE Id = ?');
+        $query->execute([$name,$biografy,$image,$id]);
+    }
+
+   
 }

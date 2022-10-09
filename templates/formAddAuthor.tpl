@@ -1,10 +1,10 @@
 
-<form action="addCat" method="POST" class="my-4">
+<form action="addAuthor" method="POST" class="my-4">
     <div class="row">
         <div class="col-6">
             <div class="form-group">
                 <label>Nombre</label>
-                <input name="name" type="text" class="form-control">
+                <input name="name" type="text" class="form-control" >
             </div>
         </div>
 
@@ -16,7 +16,7 @@
         </div>
         
         <div class="form-group">
-            <label>Bbiografia</label>
+            <label>Biografia</label>
             <textarea name="biografy" class="form-control" rows="3"></textarea>
         </div>
     </div>

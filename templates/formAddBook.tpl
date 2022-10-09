@@ -1,9 +1,10 @@
 {if !empty($error)}
-<h1>ERROR!</h1>
-<h2>$error</h2>
-{/if}
-
-<form action="add" method="POST" class="my-4">
+    <h1>ERROR!</h1>
+    <h2>{$error}</h2>
+    {/if}
+    
+    
+<form action="add" method="POST" class="my-4" enctype="multipart/form-data">
     <div class="row">
         <div class="col-6">
             <div class="form-group">
@@ -21,7 +22,7 @@
         <div class="col-6">
             <div class="form-group">
                 <label>Imagen</label>
-                <input name="image" type="text" class="form-control">
+                <input name="image" type="file" class="form-control">
             </div>
         </div>
         <div class="col-6">
@@ -46,8 +47,8 @@
             <div class="form-group">
                 <label>Autor</label>
                 <select name="author" class="form-control">
-                {foreach from = $categories item = $category }
-                    <option value="{$category->Id}">{$category->Nombre}</option>
+                {foreach from = $authors item = $author }
+                    <option value="{$author->Id}">{$author->Nombre}</option>
                 {/foreach}   
                 </select>
             </div>

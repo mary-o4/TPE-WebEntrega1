@@ -28,8 +28,14 @@ class BookModel{
         
         return $books;
     }
+    function getBooksForAuthor($id){
+        $query = $this->db->prepare("SELECT libro.Titulo, libro.ID, libro.ID_autor_FK from `autor` INNER JOIN `libro` ON autor.Id=libro.ID_autor_fk WHERE autor.Id=$id ");
+        $query->execute();
 
-    function getDescription($id){
+        $books = $query->fetchAll(PDO::FETCH_OBJ);
+        return $books;
+    }
+    function getBook($id){
         // o especificar las columnas `Genero`, `Fecha_de_Publicacion`, `Editorial`,`ISBN`, `Sinopsis`, `Imagen`
         $query = $this->db->prepare("SELECT libro.*, autor.Nombre, autor.Id FROM libro INNER JOIN autor ON libro.ID_autor_FK=autor.Id WHERE libro.ID=$id");
         $query->execute();
@@ -40,9 +46,21 @@ class BookModel{
     }
 
     function insertBook($title, $genre, $date, $editorial, $isbn, $synopsis, $image, $author) {
-        $query = $this->db->prepare("INSERT INTO libro (Nombre, Genero, Fecha_de_Publicacion, Editorial, ISBN, Sinopsis, Imagen, ID_author_FK ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        $query = $this->db->prepare("INSERT INTO libro (Titulo, Genero, Fecha_de_Publicacion, Editorial, ISBN, Sinopsis, Imagen, ID_autor_FK ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
         $query->execute([$title, $genre, $date, $editorial, $isbn, $synopsis, $image, $author]);
 
         return $this->db->lastInsertId();
+    }
+
+    function deleteBookById($id){
+        $query = $this->db->prepare('DELETE FROM libro WHERE ID = ?');
+        $query->execute([$id]);
+    }
+
+    function updateBookById($title, $genre, $date, $editorial, $isbn, $synopsis, $image, $author,$id){
+        $query = $this->db->prepare('UPDATE libro SET Titulo = ?, Genero = ?, Fecha_de_Publicacion = ?, Editorial = ?, ISBN = ?, Sinopsis = ?, Imagen = ?, ID_autor_FK = ? WHERE ID = ?');
+        $query->execute([$title, $genre, $date, $editorial, $isbn, $synopsis, $image, $author,$id]);
+        $book = $query->fetch(PDO::FETCH_OBJ);
+        return $book;
     }
 }

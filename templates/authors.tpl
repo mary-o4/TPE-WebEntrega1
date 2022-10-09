@@ -3,12 +3,18 @@
 <ul class="list-group">
 {foreach from = $authors item = $author }
     <li class='list-group-item d-flex justify-content-between align-items-center'>
-            <a href='itemsForAuthor/{$author->Id}'><b>{$author->Nombre}</b></a> 
-            <a href='delete/{$author->Id}' type='button' class='btn btn-danger ml-auto'>Borrar</a>
+            <a href='author/{$author->Id}'><b>{$author->Nombre}</b></a> 
+            <div class="ml-auto">
+                {if isset($smarty.session.USER_ID)}
+                <a href='deleteAuthor/{$author->Id}' type='button' class='btn btn-danger ml-auto'>Borrar</a>
+                {/if}
+            </div>    
     </li>
 {/foreach}  
 </ul>
 
-{include file="formInsertCategories.tpl"}
+{if isset($smarty.session.USER_ID)}
+{include file="formAddAuthor.tpl"}
+{/if}
 
 {include file="footer.tpl"}

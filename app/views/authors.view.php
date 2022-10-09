@@ -17,16 +17,12 @@ class AuthorView{
        
     }
 
-    function showItemsForAuthor($itemsForAuthor){
-
-        $this->smarty->assign('itemsForAuthor', $itemsForAuthor);
-        $this->smarty->display('itemsAuthors.tpl');
-
+    function showAuthor($author){
+        $this->smarty->assign('author', $author); 
+        $this->smarty->display('author.tpl');
     }
+    
 
-    function showCategories($categories){
-
-        $this->smarty->assign('categories', $categories);
-        $this->smarty->display('formInsertItem.tpl');
-    }
+    
+    
 }

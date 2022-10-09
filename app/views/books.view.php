@@ -9,25 +9,32 @@ class BookView{
         $this->smarty = new Smarty();
     }
 
-    function showBooks($books){
+    function showBooks($books,$authors){
        
         $this->smarty->assign('books', $books);
+        $this->smarty->assign('authors', $authors);
         $this->smarty->display('books.tpl');
        
     
         
     }
+
+    function showBooksForAuthor($books){
+        $this->smarty->assign('books', $books);
+        $this->smarty->display('booksForAuthor.tpl');
+    }
 //seguir por aca sacar a tpl la vista 
-    function showDescription($book){
+    function showBook($book,$authors){
        
         $this->smarty->assign('book', $book);
-        $this->smarty->display('descriptionItem.tpl');
+        $this->smarty->assign('authors', $authors);
+        $this->smarty->display('book.tpl');
         
     }
 
     function showError($error){
 
         $this->smarty->assign('error', $error);
-        $this->smarty->display('books.tpl');
+        $this->smarty->display('formAddBook.tpl');
     }
 }
