@@ -28,13 +28,7 @@ class BookModel{
         
         return $books;
     }
-    function getBooksForAuthor($id){
-        $query = $this->db->prepare("SELECT libro.Titulo, libro.ID, libro.ID_autor_FK from `autor` INNER JOIN `libro` ON autor.Id=libro.ID_autor_fk WHERE autor.Id=$id ");
-        $query->execute();
-
-        $books = $query->fetchAll(PDO::FETCH_OBJ);
-        return $books;
-    }
+    
     function getBook($id){
         // o especificar las columnas `Genero`, `Fecha_de_Publicacion`, `Editorial`,`ISBN`, `Sinopsis`, `Imagen`
         $query = $this->db->prepare("SELECT libro.*, autor.Nombre, autor.Id FROM libro INNER JOIN autor ON libro.ID_autor_FK=autor.Id WHERE libro.ID=$id");

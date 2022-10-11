@@ -13,7 +13,12 @@
 {/foreach}  
 </ul>
 
+
 {if isset($smarty.session.USER_ID)}
+    {if !empty($message)}
+        <h2>{$message}</h2>
+    {/if}
+
 {include file="formAddAuthor.tpl"}
 {/if}
 

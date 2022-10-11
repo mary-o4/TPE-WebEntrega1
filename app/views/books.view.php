@@ -19,10 +19,7 @@ class BookView{
         
     }
 
-    function showBooksForAuthor($books){
-        $this->smarty->assign('books', $books);
-        $this->smarty->display('booksForAuthor.tpl');
-    }
+   
 //seguir por aca sacar a tpl la vista 
     function showBook($book,$authors){
        

@@ -42,12 +42,7 @@ class BookController{
     }
 
 
-    function showBooksForAuthor($id){
-        //session_start();
-        $books = $this->modelBooks->getBooksForAuthor($id);
-        $this->view->showBooksForAuthor($books);
-
-    }
+   
     function addBook(){
         //para q no me muestre el form si no estoy logueado
         $this->authHelper->checkLoggedIn();

@@ -1,4 +1,4 @@
-<form action="updateBook/{$book->ID}" method="POST" class="my-4">
+<form action="updateBook/{$book->ID}" method="POST" class="my-4" enctype="multipart/form-data">
     <div class="row">
         <div class="col-6">
             <div class="form-group">
@@ -16,7 +16,7 @@
         <div class="col-6">
             <div class="form-group">
                 <label>Imagen</label>
-                <input name="image" type="text" class="form-control" value= "{$book->Imagen}">
+                <input name="image" type="file" class="form-control" value= "{$book->Imagen}">
             </div>
         </div>
         <div class="col-6">

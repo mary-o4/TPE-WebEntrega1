@@ -26,7 +26,7 @@ class AuthorController{
 
         $authors= $this->modelAuthors->getAll();
 
-        $this->viewAuthors->showAuthors($authors);
+        $this->viewAuthors->showAuthors($authors, $message=null);
     }
 
     function showAuthor($id){
@@ -35,6 +35,13 @@ class AuthorController{
         
         $author = $this->modelAuthors->getAuthor($id);
         $this->viewAuthors->showAuthor($author);
+    }
+
+    function showBooksForAuthor($id){
+        //session_start();
+        $books = $this->modelAuthors->getBooksForAuthor($id);
+        $this->viewAuthors->showBooksForAuthor($books);
+
     }
 
     function addAuthor(){
@@ -60,8 +67,19 @@ class AuthorController{
         //para q no me muestre el form si no estoy logueado
         $this->authHelper->checkLoggedIn();
 
-        $this->modelAuthors->deleteAuthorById($id);
-        header("Location: " . BASE_URL. 'authors'); 
+        $books=$this->modelAuthors->getBooksForAuthor($id);
+        $authors= $this->modelAuthors->getAll();
+        if($books != NULL){
+            
+            $this->viewAuthors->showAuthors($authors,"Este autor no se puede borrar, tiene libros cargados");
+            
+        }
+        else{
+            $this->modelAuthors->deleteAuthorById($id);
+            header("Location: " . BASE_URL. 'authors');
+        }
+        
+        
     }
 
     function updateAuthor($id){

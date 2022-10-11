@@ -47,6 +47,14 @@ class AuthorModel{
         return $itemsForAuthor;
 
     }*/
+
+    function getBooksForAuthor($id){
+        $query = $this->db->prepare("SELECT libro.Titulo, libro.ID, libro.ID_autor_FK from `autor` INNER JOIN `libro` ON autor.Id=libro.ID_autor_fk WHERE autor.Id=$id ");
+        $query->execute();
+
+        $books = $query->fetchAll(PDO::FETCH_OBJ);
+        return $books;
+    }
    
     function insertAuthor($name, $biografy, $image){
         $query = $this->db->prepare("INSERT INTO autor(Nombre, Biografia, Imagen) VALUES(?, ?, ?)");

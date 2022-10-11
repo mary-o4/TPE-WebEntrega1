@@ -45,7 +45,7 @@ switch ($params[0]) {
         break;
     case 'booksForAuthor':
         $id = $params[1];
-        $controllerBook->showBooksForAuthor($id);
+        $controllerAuthor->showBooksForAuthor($id);
         break;
     case 'add':
         $controllerBook->addBook();
