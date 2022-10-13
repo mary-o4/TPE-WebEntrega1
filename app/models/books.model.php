@@ -20,7 +20,7 @@ class BookModel{
         // 2. ejecuto la sentencia (2 subpasos)
         // 
         //SELECT libro.Titulo, libro.ID, autor.Nombre, autor.Id FROM libro INNER JOIN autor ON libro.ID_autor_FK=autor.Id
-        $query = $this->db->prepare("SELECT `Titulo`, `ID` FROM libro");
+        $query = $this->db->prepare("SELECT `Titulo`,`Imagen`, `ID` FROM libro");
         $query->execute();
     
         // 3. obtengo los resultados
@@ -39,11 +39,24 @@ class BookModel{
         return $book;
     }
 
-    function insertBook($title, $genre, $date, $editorial, $isbn, $synopsis, $image, $author) {
+    function insertBook($title, $genre, $date, $editorial, $isbn, $synopsis, $image = null, $author) {
+
+        $pathimg = null;
+
+        if($image)
+            $pathImg = $this->uploadImagebook($image);
+
         $query = $this->db->prepare("INSERT INTO libro (Titulo, Genero, Fecha_de_Publicacion, Editorial, ISBN, Sinopsis, Imagen, ID_autor_FK ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-        $query->execute([$title, $genre, $date, $editorial, $isbn, $synopsis, $image, $author]);
+        $query->execute([$title, $genre, $date, $editorial, $isbn, $synopsis, $pathImg, $author]);
 
         return $this->db->lastInsertId();
+    }
+
+    private function uploadImageBook($image){
+        $target = 'images/' . uniqid() . '.jpg';
+        move_uploaded_file($image, $target);
+        return $target;
+
     }
 
     function deleteBookById($id){
@@ -51,9 +64,13 @@ class BookModel{
         $query->execute([$id]);
     }
 
-    function updateBookById($title, $genre, $date, $editorial, $isbn, $synopsis, $image, $author,$id){
+    function updateBookById($title, $genre, $date, $editorial, $isbn, $synopsis, $image = null, $author,$id){
+
+        if($image)
+            $pathImg = $this->uploadImagebook($image);
+
         $query = $this->db->prepare('UPDATE libro SET Titulo = ?, Genero = ?, Fecha_de_Publicacion = ?, Editorial = ?, ISBN = ?, Sinopsis = ?, Imagen = ?, ID_autor_FK = ? WHERE ID = ?');
-        $query->execute([$title, $genre, $date, $editorial, $isbn, $synopsis, $image, $author,$id]);
+        $query->execute([$title, $genre, $date, $editorial, $isbn, $synopsis, $pathImg, $author,$id]);
         $book = $query->fetch(PDO::FETCH_OBJ);
         return $book;
     }

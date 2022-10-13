@@ -53,18 +53,27 @@ class BookController{
         $editorial = $_POST['editorial'];
         $isbn = $_POST['isbn'];
         $synopsis = $_POST['synopsis'];
-        $image = $_POST['image'];
+        $image = $_FILES['image']['tmp_name'];
         $author = $_POST['author'];
         
         
 
         //verifico campos obligatorios
-        if(empty($title) || empty($genre) || empty($image) || empty($editorial) || empty($date) || empty($isbn) || empty($author) || empty($synopsis)){
+        if(empty($title) || empty($genre) ||  empty($editorial) || empty($date) || empty($isbn) || empty($author) || empty($synopsis)){
             $this->view->showError('Faltan datos obligatorios');
             die();
         }
-    
-        $id = $this->modelBooks->insertBook($title, $genre, $date, $editorial, $isbn, $synopsis, $image, $author);
+        
+        $agregar=true;
+        if($agregar){
+            if($_FILES['image']['type'] == 'image/jpg' || $_FILES['image']['type'] == 'image/jpeg' || $_FILES['image']['type'] == 'image/jpg'){
+                $this->modelBooks->insertBook($title, $genre, $date, $editorial, $isbn, $synopsis, $_FILES['image']['tmp_name'], $author);
+            }
+        }else{
+             $this->modelBooks->insertBook($title, $genre, $date, $editorial, $isbn, $synopsis,$image, $author);
+        }
+
+        
     
         header("Location: " . BASE_URL); 
     }
@@ -87,10 +96,20 @@ class BookController{
         $editorial = $_POST['editorial'];
         $isbn = $_POST['isbn'];
         $synopsis = $_POST['synopsis'];
-        $image = $_POST['image'];
+        $image = $_FILES['image']['tmp_name'];
         $author = $_POST['author'];
 
+        if(empty($title) || empty($genre)|| empty($author)){
+            $this->view->showError('Faltan datos obligatorios');
+            die();
+        }
+
+        if($_FILES['image']['type'] == 'image/jpg' || $_FILES['image']['type'] == 'image/jpeg' || $_FILES['image']['type'] == 'image/jpg'){
+            $this->modelBooks->updateBookById($title, $genre, $date, $editorial, $isbn, $synopsis,  $_FILES['image']['tmp_name'], $author,$id);
+        }else{
         $this->modelBooks->updateBookById($title, $genre, $date, $editorial, $isbn, $synopsis, $image, $author,$id);
+        
+        }
         header("Location: " . BASE_URL. 'book/'.$id);
     }
 }

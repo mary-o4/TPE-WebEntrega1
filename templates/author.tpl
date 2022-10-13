@@ -1,16 +1,20 @@
 {include file="header.tpl"}
 
-<ul class="list-group">
-    <li>{$author->Nombre}</li>
-    <li>{$author->Imagen}</li>
-    <li>{$author->Biografia}</li>
-    <li class='list-group-item d-flex justify-content-between align-items-center'>
-        <a href='booksForAuthor/{$author->Id}'><b>Mostrar libros del Autor</b></a> 
-         
-    </li>
-    
+<div class="card mb-3" style="max-width: 540px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="{$author->Imagen}" class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{$author->Nombre}</h5>
+        <p class="card-text">{$author->Biografia}</p>
+        <a href="booksForAuthor/{$author->Id}" class="btn btn-secondary">Mostrar libros del Autor</a>
+      </div>
+    </div>
+  </div>
+</div>
 
-</ul>
 {if isset($smarty.session.USER_ID)}
 {include file="formUpdateAuthor.tpl"}
 {/if}

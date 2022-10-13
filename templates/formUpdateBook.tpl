@@ -54,5 +54,5 @@
         <textarea name="synopsis" class="form-control" rows="3" placeholder="{$book->Sinopsis}"></textarea>
     </div>
 
-    <button type="submit" class="btn btn-primary mt-2">Modificar</button>
+    <button type="submit" class="btn btn-secondary mt-2">EDITAR</button>
 </form>

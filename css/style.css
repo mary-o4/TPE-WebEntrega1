@@ -6,10 +6,21 @@ body{
 
 nav.barnav{
    height: 100px;
-   background-color: #ff5a00;
    margin-bottom: 20px;
+   background-color: #ff5a00 !important;
 }
 
+div.row{
+   margin-bottom: 15px;
+}
+
+.card{
+   margin:auto;
+}
+
+img.img{
+   height: 250px;
+}
 /*.navbar-expand-lg{
    background-color: red;
 }

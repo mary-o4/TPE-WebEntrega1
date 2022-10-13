@@ -9,14 +9,14 @@
         <div class="col-6">
             <div class="form-group">
                 <label>Título</label>
-                <input name="title" type="text" class="form-control">
+                <input name="title" type="text" class="form-control" required>
             </div>
         </div>
 
         <div class="col-6">
             <div class="form-group">
                 <label>Genero</label>
-                <input name="genre" type="text" class="form-control">
+                <input name="genre" type="text" class="form-control" required>
             </div>
         </div>
         <div class="col-6">
@@ -28,13 +28,13 @@
         <div class="col-6">
             <div class="form-group">
                 <label>Editorial</label>
-                <input name="editorial" type="text" class="form-control">
+                <input name="editorial" type="text" class="form-control" required>
             </div>
         </div>
         <div class="col-4">
             <div class="form-group">
                 <label>Fecha de Publicacion</label>
-                <input name="date" type="text" class="form-control">
+                <input name="date" type="text" class="form-control" required>
             </div>
         </div>
         <div class="col-4">
@@ -57,8 +57,8 @@
 
     <div class="form-group">
         <label>Sinopsis</label>
-        <textarea name="synopsis" class="form-control" rows="3"></textarea>
+        <textarea name="synopsis" class="form-control" rows="3" required></textarea>
     </div>
 
-    <button type="submit" class="btn btn-primary mt-2">Guardar</button>
+    <button type="submit" class="btn btn-secondary mt-2">AGREGAR</button>
 </form>

@@ -50,15 +50,18 @@ class AuthorController{
 
         $name = $_POST['name'];
         $biografy = $_POST['biografy'];
-        $image = $_POST['image'];
+        $image = $_FILES['image']['tmp_name'];
 
         if(empty($name)){
             $this->viewBooks->showError('Faltan datos obligatorios');
             die();
         }
 
-        $id = $this->modelAuthors->insertAuthor($name, $biografy, $image);
-        
+        if($_FILES['image']['type'] == 'image/jpg' || $_FILES['image']['type'] == 'image/jpeg' || $_FILES['image']['type'] == 'image/jpg'){
+            $id = $this->modelAuthors->insertAuthor($name, $biografy, $_FILES['image']['tmp_name']);
+        }else{    
+                $id = $this->modelAuthors->insertAuthor($name, $biografy, $image);
+        }
         header("Location: " . BASE_URL. 'authors');  //como poner para q me lleve a la misma pagina por que me lleva al home
 
     }
@@ -88,9 +91,18 @@ class AuthorController{
         
         $name = $_POST['name'];
         $biografy = $_POST['biografy'];
-        $image = $_POST['image'];
+        $image = $_FILES['image']['tmp_name'];
 
-        $this->modelAuthors->updateAuthorById( $name, $biografy,$image, $id);
+        if(empty($name)){
+            $this->viewBooks->showError('Faltan datos obligatorios');
+            die();
+        }
+
+        if($_FILES['image']['type'] == 'image/jpg' || $_FILES['image']['type'] == 'image/jpeg' || $_FILES['image']['type'] == 'image/jpg'){
+            $this->modelAuthors->updateAuthorById( $name, $biografy,$_FILES['image']['tmp_name'], $id);
+        }else{    
+            $this->modelAuthors->updateAuthorById( $name, $biografy,$image, $id);
+        }
         header("Location: " . BASE_URL. 'author/'.$id);
     }
 

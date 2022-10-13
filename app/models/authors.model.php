@@ -56,11 +56,22 @@ class AuthorModel{
         return $books;
     }
    
-    function insertAuthor($name, $biografy, $image){
+    function insertAuthor($name, $biografy, $image = null){
+
+        if($image)
+            $pathImg = $this->uploadImagebook($image);
+
         $query = $this->db->prepare("INSERT INTO autor(Nombre, Biografia, Imagen) VALUES(?, ?, ?)");
-        $query->execute([$name, $biografy, $image]);
+        $query->execute([$name, $biografy, $pathImg]);
 
         return $this->db->lastInsertId();
+
+    }
+
+    private function uploadImageBook($image){
+        $target = 'images/' . uniqid() . '.jpg';
+        move_uploaded_file($image, $target);
+        return $target;
 
     }
 
@@ -70,9 +81,13 @@ class AuthorModel{
         $query->execute([$id]);
     }
     
-    function updateAuthorById($name,$biografy,$image,$id){
+    function updateAuthorById($name,$biografy,$image = null,$id){
+
+        if($image)
+            $pathImg = $this->uploadImagebook($image);
+
         $query = $this->db->prepare('UPDATE autor SET Nombre = ?, Biografia= ?, Imagen= ? WHERE Id = ?');
-        $query->execute([$name,$biografy,$image,$id]);
+        $query->execute([$name,$biografy,$pathImg,$id]);
     }
 
    

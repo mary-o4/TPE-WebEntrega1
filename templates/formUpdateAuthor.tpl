@@ -21,5 +21,5 @@
     </div>
         
 
-    <button type="submit" class="btn btn-primary mt-2">Actualizar</button>
+    <button type="submit" class="btn btn-secondary mt-2">EDITAR</button>
 </form>    
