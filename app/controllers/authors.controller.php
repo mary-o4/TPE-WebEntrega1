@@ -52,7 +52,7 @@ class AuthorController{
         $biografy = $_POST['biografy'];
         $image = $_FILES['image']['tmp_name'];
 
-        if(empty($name)){
+       if(empty($name)){
             $this->viewBooks->showError('Faltan datos obligatorios');
             die();
         }
@@ -94,7 +94,7 @@ class AuthorController{
         $image = $_FILES['image']['tmp_name'];
 
         if(empty($name)){
-            $this->viewBooks->showError('Faltan datos obligatorios');
+           $this->viewBooks->showError('Faltan datos obligatorios');
             die();
         }
 

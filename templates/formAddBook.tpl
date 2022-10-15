@@ -1,22 +1,18 @@
-{if !empty($error)}
-    <h1>ERROR!</h1>
-    <h2>{$error}</h2>
-    {/if}
-    
+  
     
 <form action="add" method="POST" class="my-4" enctype="multipart/form-data">
     <div class="row">
         <div class="col-6">
             <div class="form-group">
                 <label>Título</label>
-                <input name="title" type="text" class="form-control" required>
+                <input name="title" type="text" class="form-control" >
             </div>
         </div>
 
         <div class="col-6">
             <div class="form-group">
                 <label>Genero</label>
-                <input name="genre" type="text" class="form-control" required>
+                <input name="genre" type="text" class="form-control">
             </div>
         </div>
         <div class="col-6">
@@ -28,13 +24,13 @@
         <div class="col-6">
             <div class="form-group">
                 <label>Editorial</label>
-                <input name="editorial" type="text" class="form-control" required>
+                <input name="editorial" type="text" class="form-control" >
             </div>
         </div>
         <div class="col-4">
             <div class="form-group">
                 <label>Fecha de Publicacion</label>
-                <input name="date" type="text" class="form-control" required>
+                <input name="date" type="text" class="form-control">
             </div>
         </div>
         <div class="col-4">
@@ -57,7 +53,7 @@
 
     <div class="form-group">
         <label>Sinopsis</label>
-        <textarea name="synopsis" class="form-control" rows="3" required></textarea>
+        <textarea name="synopsis" class="form-control" rows="3"></textarea>
     </div>
 
     <button type="submit" class="btn btn-secondary mt-2">AGREGAR</button>

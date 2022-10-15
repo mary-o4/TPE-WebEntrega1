@@ -15,8 +15,6 @@ class BookView{
         $this->smarty->assign('authors', $authors);
         $this->smarty->display('books.tpl');
        
-    
-        
     }
 
    
@@ -29,9 +27,11 @@ class BookView{
         
     }
 
-    function showError($error){
+    
+    function showError($message){
 
-        $this->smarty->assign('error', $error);
-        $this->smarty->display('formAddBook.tpl');
+        $this->smarty->assign('message', $message);
+        $this->smarty->display('error.tpl');
     }
+
 }

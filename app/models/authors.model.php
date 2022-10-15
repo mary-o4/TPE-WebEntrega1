@@ -28,8 +28,8 @@ class AuthorModel{
     }
     //aca deje seguir en view
     function getAuthor($id){
-        $query = $this->db->prepare("SELECT * FROM `autor` WHERE Id=$id");
-        $query->execute();
+        $query = $this->db->prepare("SELECT * FROM `autor` WHERE Id=?");
+        $query->execute([$id]);
     
        
         $author = $query->fetch(PDO::FETCH_OBJ); // devuelve un arreglo de objetos
@@ -37,16 +37,6 @@ class AuthorModel{
         return $author;
     }
     
-    /*function getItems($id){
-        
-        $query = $this->db->prepare("SELECT autor.*, libro.* FROM `autor` INNER JOIN `libro` ON autor.Id= libro.ID_autor_FK WHERE autor.Id=$id");
-        $query->execute();
-
-        $itemsForAuthor = $query->fetchAll(PDO::FETCH_OBJ);
-
-        return $itemsForAuthor;
-
-    }*/
 
     function getBooksForAuthor($id){
         $query = $this->db->prepare("SELECT libro.Titulo, libro.ID, libro.ID_autor_FK from `autor` INNER JOIN `libro` ON autor.Id=libro.ID_autor_fk WHERE autor.Id=$id ");
@@ -76,7 +66,7 @@ class AuthorModel{
     }
 
     function deleteAuthorById($id){
-        //poner condicion para eliminar categoria si..
+        
         $query = $this->db->prepare('DELETE FROM autor WHERE Id = ?');
         $query->execute([$id]);
     }
