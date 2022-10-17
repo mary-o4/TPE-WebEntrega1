@@ -2,7 +2,7 @@
 
 
 <div class="card border-dark" style="width: 30rem;">
-  <img src="{$book->Imagen}" class="card-img-top" alt="...">
+  <img src="{$book->Imagen}" class="card-img-top" alt="">
   <div class="card-body">
     <h5 class="card-title">{$book->Titulo}</h5>
     <p class="card-text">{$book->Sinopsis}</p>

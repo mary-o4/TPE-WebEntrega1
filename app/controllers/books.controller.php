@@ -22,7 +22,7 @@ class BookController{
     function showBooks() {
 
         session_start();
-        //obtiene los productos del modelo
+        //obtiene los items 
         $books = $this->modelBooks->getAll(); 
         $authors=$this->modelAuthors->getAll();
     

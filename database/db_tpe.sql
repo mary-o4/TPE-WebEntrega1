@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-10-2022 a las 19:21:14
+-- Tiempo de generación: 17-10-2022 a las 03:15:44
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -39,14 +39,15 @@ CREATE TABLE `autor` (
 --
 
 INSERT INTO `autor` (`Id`, `Nombre`, `Biografia`, `Imagen`) VALUES
-(1, 'Fiodor Dostoyevsky', 'dsfghjhgfdsf', NULL),
-(2, 'Ana Frank', '', ''),
+(1, 'Fiodor Dostoyevsky', 'Novelista ruso del siglo XIX, autor de importantes obras de la literatura universal como Crimen y castigo o El jugador, que exploran la psicología humana en el contexto social y moral de su época', 'images/634cac67759fb.jpg'),
+(2, 'Ana Frank', 'Ana Frank, judia, se escondió en 1942 de los nazis durante la ocupación de los Países Bajos. Fue descubierta 2 años después. En 1945, murió en el campo de concentración de Bergen-Belsen.', NULL),
 (3, 'Edgar Allan Poe', NULL, NULL),
 (4, 'Stephen King', NULL, NULL),
 (6, 'Franz Kafka', NULL, NULL),
 (7, 'Gabriel García Márquez', NULL, NULL),
-(8, 'Jorge Luis Borges', NULL, NULL),
-(14, 'Agatha Christie', '', '');
+(8, 'Jorge Luis Borges', 'Poeta, ensayista y escritor argentino. Estudia en Ginebra e Inglaterra. Vive en España desde 1919 hasta su regreso a Argentina en 1921. Colabora en revistas literarias, francesas y españolas, donde publica ensayos y manifiestos.', 'images/634c993c1fe14.jpg'),
+(14, 'Agatha Christie', 'Autora inglesa del género policíaco, sin duda una de las más prolíficas y leídas del siglo XX. Hija de un próspero rentista de Nueva York que murió cuando ella tenía once años de edad, recibió educación privada hasta la adolescencia y después estudió canto en París.', 'images/634c99a21fefa.jpg'),
+(23, 'Miguel Cervantes', 'Miguel de Cervantes Saavedra (Alcalá de Henares,​ 29 de septiembre de 1547-Madrid, 22 de abril​ de 1616) fue un novelista, poeta, dramaturgo y soldado español. Novelista, soldado, contable, poeta y dramaturgo. Novela, poesía y teatro. Don Quijote de la Mancha, La Galatea, Novelas ejemplares.', NULL);
 
 -- --------------------------------------------------------
 
@@ -71,15 +72,13 @@ CREATE TABLE `libro` (
 --
 
 INSERT INTO `libro` (`ID`, `Titulo`, `Genero`, `Fecha_de_Publicacion`, `Editorial`, `ISBN`, `Sinopsis`, `Imagen`, `ID_autor_FK`) VALUES
-(3, 'Crimen y Castigo', 'novela', '1866', 'Alianza', 9789873952036, 'hola', NULL, 1),
-(4, 'Diario de Ana Frank', 'Autobiografia', '25 de junio de 1947', 'Contact', 9789878304151, 'En los relatos, se cuenta la historia y vida de Frank como adolescente y los dos años en que permaneció oculta junto a su familia de origen judío de los nazis en Ámsterdam, en plena Segunda Guerra Mun', 'images/634771078d837.jpg', 2),
-(6, 'Los crímenes de la calle Morgue', 'Policial', '1841', ' Edaf', 9786071667991, ' Se produce el bárbaro asesinato de dos mujeres, madre e hija, en un apartamento de una populosa calle de París. Las primeras investigaciones no dan resultado alguno, evidenciándose la impotencia de l', '', 3),
+(3, 'Crimen y Castigo', 'novela', '1866', 'Alianza', 9789873952036, 'Considerada por la crítica como la primera obra maestra de Dostoievski, Crimen y castigo es un profundo análisis psicológico de su protagonista, el joven estudiante Raskólnikov, cuya firme creencia en que los fines humanitarios justifican la maldad le conduce al asesinato de una usurera', 'images/634cac4c25106.jpg', 1),
+(4, 'Diario de Ana Frank', 'Autobiografia', '25 de junio de 1947', 'Contact', 9789878304151, 'En los relatos, se cuenta la historia y vida de Frank como adolescente y los dos años en que permaneció oculta junto a su familia de origen judío de los nazis en Ámsterdam, en plena Segunda Guerra Mundial', 'images/634c9459c2146.jpg', 2),
+(6, 'Los crímenes de la calle Morgue', 'Policial', '1841', ' Edaf', 9786071667991, 'Se produce el bárbaro asesinato de dos mujeres, madre e hija, en un apartamento de una populosa calle de París. Las primeras investigaciones no dan resultado alguno, evidenciándose la impotencia de la policia.', 'images/634c978391a6b.jpg', 3),
 (7, 'El Aleph ', 'Ficción', '1949', 'Punto de Encuentro', 9789875666481, 'El Aleph como cuento conforma una trilogía de relatos junto a El Zahir y La escritura del dios, cada uno de los cuales centra su atención en un elemento microcósmico, una suerte de referencia panteíst', 'images/63476fe192f80.jpg', 8),
-(8, 'xdcfvgbn', 'sdfgh', '234', 'cfvgbhnjm', 3456, '', 'xdcfvgbhn', 1),
-(9, 'nwkfiniaweñ NVMOwe', 'asetyjsn', '234', 'dfgh', 34567, 'sdfghjkmnhbgvfcd', '<sdrrgftfhyju', 7),
-(10, 'detectives', 'suspenso', '1935', 'sdfghjk', 12345678, 'dfrgthjkjhngbfvdsadfrgh', 'sdfghjk', 14),
-(13, 'cumbres borrascosas', 'ddfghyjuki', '123', 'dfghjk', 234567, 'fedrtyfhujhggcfdxzsadfgc', 'dfghjuk', 4),
-(17, 'El gato Negro', 'Horror', '1881', 'cat', 2345654321234, 'Un joven matrimonio lleva una vida hogareña apacible en compañía de varios animales domésticos, entre ellos un misterioso gato negro. Todo cambia cuando el marido empieza a dejarse arrastrar por la bebida. El alcohol le vuelve irascible y en uno de sus accesos de furia acaba con la vida del animal.', 'images/6347622d0a0ac.jpg', 1),
+(9, 'Cien años de soledad ', 'novela', '234', 'solitaria', 34567, 'Entre la boda de José Arcadio Buendía con Amelia Iguarán hasta la maldición de Aureliano Babilonia transcurre todo un siglo. Cien años de soledad para una estirpe única, fantástica, capaz de fundar una ciudad tan especial como Macondo y de engendrar niños con cola de cerdo', 'images/634c97a536f76.jpg', 7),
+(13, 'Cumbres borrascosas', 'suspenso', '123', 'dfghjk', 234567, 'Cumbres borrascosas, una de las novelas inglesas más relevantes del siglo XIX, narra la épica historia de Catherine y Heathcliff. Situada en los sombríos y desolados páramos de Yorkshire, constituye una asombrosa visión metafísica del destino, la obsesión, la pasión y la venganza.', 'images/634c97e23ea95.jpg', 4),
+(17, 'El gato Negro', 'Horror', '1881', 'cat', 2345654321234, 'Un joven matrimonio lleva una vida hogareña apacible en compañía de varios animales domésticos, entre ellos un misterioso gato negro. Todo cambia cuando el marido empieza a dejarse arrastrar por la bebida. El alcohol le vuelve irascible y en uno de sus accesos de furia acaba con la vida del animal', 'images/6348a3995f4e9.jpg', 3),
 (18, 'Ficciones', 'Cuento', '1945', 'Cuspide', 34567654323456, 'Ficciones es lun libro de cuentos de Jorge Luis Borges. Se divide en dos partes: El jardín de los senderos que se bifurcan y Artificios. Como casi todas las historias de Borges, trata temas como el tiempo, el infinito, mundos ficticios, realidades alternativas, reseñas de autores o libros inexistentes, entre otros.', 'images/634764271a691.jpg', 8);
 
 -- --------------------------------------------------------
@@ -133,7 +132,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `autor`
 --
 ALTER TABLE `autor`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT de la tabla `libro`

@@ -32,7 +32,7 @@ class AuthorModel{
         $query->execute([$id]);
     
        
-        $author = $query->fetch(PDO::FETCH_OBJ); // devuelve un arreglo de objetos
+        $author = $query->fetch(PDO::FETCH_OBJ); 
         
         return $author;
     }

@@ -6,7 +6,7 @@
             <a class="text-decoration-none link-dark" href='author/{$author->Id}'><b>{$author->Nombre}</b></a> 
             <div class="ml-auto">
                 {if isset($smarty.session.USER_ID)}
-                <a href='deleteAuthor/{$author->Id}' type='button' class='btn btn-warning ml-auto'>Borrar</a>
+                    <a href='deleteAuthor/{$author->Id}' type='button' class='btn btn-warning ml-auto'>Borrar</a>
                 {/if}
             </div>    
     </li>

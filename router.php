@@ -58,7 +58,7 @@ switch ($params[0]) {
         $id = $params[1];
         $controllerBook->deleteBook($id);
         break;
-    case 'deleteAuthor'://poner condicion para q me borre solo cuando no hay libros de ese autor
+    case 'deleteAuthor':
         // obtengo el parametro de la acción
         $id = $params[1];
         $controllerAuthor->deleteAuthor($id);
@@ -73,7 +73,6 @@ switch ($params[0]) {
         $id = $params[1];
         $controllerBook->updateBook($id);
         break;
-    
     default:
         header("HTTP/1.0 404 Not Found");
         echo('404 Page not found');

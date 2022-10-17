@@ -62,7 +62,7 @@ class AuthorController{
         }else{    
                 $id = $this->modelAuthors->insertAuthor($name, $biografy, $image);
         }
-        header("Location: " . BASE_URL. 'authors');  //como poner para q me lleve a la misma pagina por que me lleva al home
+        header("Location: " . BASE_URL. 'authors');  
 
     }
 

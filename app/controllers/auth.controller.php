@@ -35,7 +35,7 @@ class AuthController{
             $_SESSION['USER_NAME'] = $user->nombre;
             header("Location: " . BASE_URL);
         } else {
-            // si los datos son incorrectos muestro el form con un erro
+            // si los datos son incorrectos muestro el form con un error
            $this->view->showFormLogin("El usuario o la contraseña no existe.");
           } 
         }
