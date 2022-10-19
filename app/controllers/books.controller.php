@@ -64,12 +64,13 @@ class BookController{
             die();
         }
         
-        $agregar=true;
-        if($agregar){
+       // $agregar=true;
+        //if($agregar){
             if($_FILES['image']['type'] == 'image/jpg' || $_FILES['image']['type'] == 'image/jpeg' || $_FILES['image']['type'] == 'image/jpg'){
                 $this->modelBooks->insertBook($title, $genre, $date, $editorial, $isbn, $synopsis, $_FILES['image']['tmp_name'], $author);
             }
-        }else{
+        //}
+        else{
              $this->modelBooks->insertBook($title, $genre, $date, $editorial, $isbn, $synopsis,$image, $author);
         }
 

@@ -41,7 +41,7 @@ class BookModel{
 
     function insertBook($title, $genre, $date, $editorial, $isbn, $synopsis, $image = null, $author) {
 
-        $pathimg = null;
+        $pathImg = null;
 
         if($image)
             $pathImg = $this->uploadImagebook($image);
